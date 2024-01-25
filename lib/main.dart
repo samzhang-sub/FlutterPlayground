@@ -1,10 +1,24 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:xhs_current/views/mine_view.dart';
+import 'package:xhs_current/views/post_view.dart';
 import 'package:xhs_current/views/recommend_view.dart';
 
 // model view view-model
 void main() {
   runApp(const MyApp());
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        // etc.
+      };
 }
 
 class MyApp extends StatelessWidget {
@@ -15,11 +29,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
+      scrollBehavior: MyCustomScrollBehavior(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const RecommendPage(),
+      home: MineView(),
     );
   }
 }

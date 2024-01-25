@@ -38,7 +38,7 @@ class _CardWidgetState extends State<CardWidget> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(borderRadius),
                         topRight: Radius.circular(borderRadius)),
-                    child: Image.network(widget.imageUrl, fit: BoxFit.fill)),
+                    child: Image.asset(widget.imageUrl, fit: BoxFit.fill)),
                 Container(
                   margin: const EdgeInsets.all(10),
                   child: Column(

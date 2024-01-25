@@ -17,9 +17,11 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 // }
 
 final List<String> imageUrls = [
-  "https://picsum.photos/250/400?image=7",
-  "https://picsum.photos/250/200?image=7",
-  "https://picsum.photos/250/300?image=7",
+  // "https://picsum.photos/250/400?image=7",
+  // "https://picsum.photos/250/200?image=7",
+  // "https://picsum.photos/250/300?image=7",
+  "assets/images/IMG_0114.JPG",
+  "assets/images/test_image.png"
 ];
 
 class RecommendPage extends StatelessWidget {
@@ -43,8 +45,8 @@ class RecommendPage extends StatelessWidget {
             crossAxisCount: columns,
             itemBuilder: (context, index) {
               return CardWidget(
-                  imageUrl: imageUrls[index % 3],
-                  title: "别再花钱装系统了 自己就可以 很简单",
+                  imageUrl: imageUrls[index % 2],
+                  title: "别再花钱装系统了 自己就可以 很简单a",
                   avatarUrl: "https://picsum.photos/250?image=9",
                   username: "小红书",
                   likeCount: 100);
