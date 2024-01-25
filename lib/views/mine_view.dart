@@ -12,7 +12,9 @@ final List<String> imageUrls = [
 
 // small text
 
-TextStyle smallTextStyle = const TextStyle(fontSize: 13, color: Colors.grey);
+TextStyle smallTextStyle = const TextStyle(fontSize: 12, color: Colors.grey);
+
+TextStyle meidumTextStyle = const TextStyle(fontSize: 14, color: Colors.white);
 
 TextStyle normalTextStyle = const TextStyle(fontSize: 17, color: Colors.white);
 
@@ -145,6 +147,18 @@ class _MineViewState extends State<MineView> {
                             onPressed: () {}),
                       ],
                     ),
+                    _vspL(),
+                    Row(
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _smallCard(
+                            Icons.add_shopping_cart_outlined, '购物车', '查看推荐好物'),
+                        _smallCard(Icons.lightbulb_outline, '购物车', '查看推荐好物'),
+                        _smallCard(Icons.history, '购物车', '查看推荐好物'),
+                        // Container(height: 60, width: 20, color: Colors.amber),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -153,6 +167,12 @@ class _MineViewState extends State<MineView> {
               pinned: true,
               delegate: _SliverAppBarDeligate(
                 TabBar(
+                  indicatorColor: Colors.red,
+                  labelColor: Colors.black,
+                  labelStyle:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  unselectedLabelStyle:
+                      TextStyle(fontWeight: FontWeight.normal),
                   tabs: [
                     Tab(text: '笔记'),
                     Tab(text: '收藏'),
@@ -164,6 +184,7 @@ class _MineViewState extends State<MineView> {
               child: TabBarView(
                 children: [
                   MasonryGridView.count(
+                      physics: ClampingScrollPhysics(),
                       itemCount: 20,
                       crossAxisCount: 2,
                       itemBuilder: (context, index) {
@@ -218,6 +239,37 @@ class _MineViewState extends State<MineView> {
           style: smallTextStyle,
         ),
       ],
+    );
+  }
+
+  Widget _smallCard(IconData icon, String title, String description) {
+    final mediaWidth = MediaQuery.of(context).size.width;
+    final cardWidth = (mediaWidth - 40) / 3 - 6;
+
+    return Container(
+      width: cardWidth,
+      padding: EdgeInsets.only(left: 12, top: 8, bottom: 8),
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 96, 107, 113),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(
+                icon,
+                color: Colors.white,
+                size: 17,
+              ),
+              SizedBox(width: 6),
+              Text(title, style: meidumTextStyle)
+            ],
+          ),
+          Text(description, style: smallTextStyle),
+        ],
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:xhs_current/views/main_view.dart';
 import 'package:xhs_current/views/mine_view.dart';
 import 'package:xhs_current/views/post_view.dart';
 import 'package:xhs_current/views/recommend_view.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MineView(),
+      home: MainPageView(),
     );
   }
 }
